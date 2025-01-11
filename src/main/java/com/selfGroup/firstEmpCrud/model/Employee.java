@@ -1,13 +1,22 @@
 package com.selfGroup.firstEmpCrud.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "emp")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int eid;
 
+    @Column(name = "emp_name")
     public String name;
 
+    @Column(name = "adress")
     public String Address;
 
+    @Column(name = "u_name")
     public String user_name;
 
     public String pass;
