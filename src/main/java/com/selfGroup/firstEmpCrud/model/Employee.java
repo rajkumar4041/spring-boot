@@ -7,13 +7,13 @@ import jakarta.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int eid;
 
     @Column(name = "emp_name")
     public String name;
 
-    @Column(name = "adress")
+    @Column(name = "address")
     public String Address;
 
     @Column(name = "u_name")
