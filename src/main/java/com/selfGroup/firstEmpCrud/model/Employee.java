@@ -62,6 +62,15 @@ public class Employee {
         this.pass = pass;
     }
 
+    public  Employee(){}
+
+    public Employee(Employee e) {
+        this.eid = e.getEid();
+        this.pass = e.getPass();
+        this.user_name = e.getUser_name();
+        Address = e.getAddress();
+        this.name = e.getName();
+    }
 
     @Override
     public String toString() {

@@ -7,4 +7,8 @@ public interface EmployeeService  {
 
     public Employee addNewEmployee(Employee employee);
 
+    public Employee editEmployee(Employee employee);
+
+    public Employee deleteEmployee(Integer id);
+
 }
