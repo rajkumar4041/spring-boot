@@ -13,6 +13,6 @@ public class FirstEmpCrudApplication {
 		EmployeeController empController = context.getBean(EmployeeController.class);
 
 		// Call the desired method
-		empController.insetEmployee();
+		empController.deleteEmployee(2);
 	}
 }

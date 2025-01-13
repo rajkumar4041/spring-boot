@@ -23,4 +23,18 @@ public class EmployeeController {
         return employeeService.addNewEmployee(e);
     }
 
+    public  Employee editEmployee(){
+        e.setName("sanjeev");
+        e.setAddress("himachal");
+        e.setUser_name("doraemon");
+        e.setPass("Dora@123");
+        e.setEid(2);
+
+        return  employeeService.editEmployee(e);
+    }
+
+    public  Employee deleteEmployee(Integer id){
+        return  employeeService.deleteEmployee(id);
+    }
+
 }
