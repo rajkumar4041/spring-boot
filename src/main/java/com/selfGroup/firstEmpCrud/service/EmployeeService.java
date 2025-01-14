@@ -14,4 +14,7 @@ public interface EmployeeService  {
     public Employee deleteEmployeeById(Integer id);
 
     public List<Employee> getAllEmployees();
+
+    public Employee getSingleEmployee(Integer id);
+
 }

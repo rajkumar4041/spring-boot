@@ -49,4 +49,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return allEmployees;
     }
+
+    public Employee getSingleEmployee(Integer id) {
+        Employee employeeToReturn;
+        Optional<Employee> singleEmployee = employeeRepository.findById(id);
+
+        return singleEmployee.orElse(null);
+    }
 }
