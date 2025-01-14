@@ -1,7 +1,6 @@
 package com.selfGroup.firstEmpCrud;
 
 import com.selfGroup.firstEmpCrud.Controller.EmployeeController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +12,6 @@ public class FirstEmpCrudApplication {
 		EmployeeController empController = context.getBean(EmployeeController.class);
 
 		// Call the desired method
-		empController.deleteEmployee(2);
+//		empController.getAllUser();
 	}
 }

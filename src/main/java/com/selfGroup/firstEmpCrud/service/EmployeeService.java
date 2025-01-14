@@ -2,6 +2,8 @@ package com.selfGroup.firstEmpCrud.service;
 
 import com.selfGroup.firstEmpCrud.model.Employee;
 
+import java.util.List;
+
 public interface EmployeeService  {
 
 
@@ -9,6 +11,7 @@ public interface EmployeeService  {
 
     public Employee editEmployee(Employee employee);
 
-    public Employee deleteEmployee(Integer id);
+    public Employee deleteEmployeeById(Integer id);
 
+    public List<Employee> getAllEmployees();
 }

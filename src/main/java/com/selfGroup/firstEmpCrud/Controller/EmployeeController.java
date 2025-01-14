@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class EmployeeController {
 
@@ -33,8 +35,13 @@ public class EmployeeController {
         return  employeeService.editEmployee(e);
     }
 
-    public  Employee deleteEmployee(Integer id){
-        return  employeeService.deleteEmployee(id);
+    public  Employee deleteEmployeeById(Integer id){
+        return  employeeService.deleteEmployeeById(id);
+    }
+
+    @GetMapping("/get")
+    public List<Employee> getAllUser(){
+        return employeeService.getAllEmployees();
     }
 
 }
