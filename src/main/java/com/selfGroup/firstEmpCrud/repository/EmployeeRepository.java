@@ -3,4 +3,10 @@ package com.selfGroup.firstEmpCrud.repository;
 import com.selfGroup.firstEmpCrud.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmployeeRepository extends JpaRepository<Employee,Integer> {}
+import java.util.List;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+    List<Employee> findByActive(Boolean active);
+
+}

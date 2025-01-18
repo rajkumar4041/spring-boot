@@ -4,12 +4,12 @@ import com.selfGroup.firstEmpCrud.model.Employee;
 
 import java.util.List;
 
-public interface EmployeeService  {
+public interface EmployeeService {
 
 
     public Employee addNewEmployee(Employee employee);
 
-//    add employee with post method
+    //    add employee with post method
     public Employee addNewEmployeeUsingPost(Employee employee);
 
     public Employee editEmployee(Employee employee);
@@ -17,6 +17,9 @@ public interface EmployeeService  {
     public Employee deleteEmployeeById(Integer id);
 
     public List<Employee> getAllEmployees();
+
+    public List<Employee> getAllUserByStatus(Boolean active);
+
 
     public Employee getSingleEmployee(Integer id);
 
