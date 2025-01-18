@@ -21,7 +21,6 @@ public class Employee {
 
     public String pass;
 
-
     public int getEid() {
         return eid;
     }

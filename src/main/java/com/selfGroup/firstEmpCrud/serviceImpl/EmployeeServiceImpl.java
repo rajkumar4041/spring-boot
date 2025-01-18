@@ -4,7 +4,6 @@ import com.selfGroup.firstEmpCrud.model.Employee;
 import com.selfGroup.firstEmpCrud.repository.EmployeeRepository;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,13 +14,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Override
     public Employee addNewEmployee(Employee employee) {
-        Employee empl=employeeRepository.save(employee);
+        Employee empl = employeeRepository.save(employee);
 
         return empl;
+    }
+
+    @Override
+    public Employee addNewEmployeeUsingPost(Employee employee) {
+        employeeRepository.save(employee);
+        return null;
     }
 
     @Override
@@ -29,18 +34,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Optional<Employee> empById = employeeRepository.findById(employee.getEid());
 
-            empById.ifPresent((employee1)->{
+        empById.ifPresent((employee1) -> {
 //          employee1.setPass(employee.getPass());
             employeeRepository.save(employee);
         });
 
         return null;
     }
+
     @Override
     public Employee deleteEmployeeById(Integer id) {
         employeeRepository.deleteById(id);
-        
-        return null; }
+
+        return null;
+    }
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -50,10 +57,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return allEmployees;
     }
 
+
+//    handle error with null check
+//    public Employee getSingleEmployee(Integer id) {
+//        Employee employeeToReturn;
+//        Optional<Employee> singleEmployee = employeeRepository.findById(id);
+//
+//        return singleEmployee.orElse(null);
+//    }
+
+    //    through error for handling if data not present for the given id
     public Employee getSingleEmployee(Integer id) {
         Employee employeeToReturn;
-        Optional<Employee> singleEmployee = employeeRepository.findById(id);
+        Employee employee = employeeRepository.findById(id).get();
 
-        return singleEmployee.orElse(null);
+        return employee;
     }
 }

@@ -9,6 +9,9 @@ public interface EmployeeService  {
 
     public Employee addNewEmployee(Employee employee);
 
+//    add employee with post method
+    public Employee addNewEmployeeUsingPost(Employee employee);
+
     public Employee editEmployee(Employee employee);
 
     public Employee deleteEmployeeById(Integer id);
