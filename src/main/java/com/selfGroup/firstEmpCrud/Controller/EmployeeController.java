@@ -3,50 +3,63 @@ package com.selfGroup.firstEmpCrud.Controller;
 import com.selfGroup.firstEmpCrud.model.Employee;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class EmployeeController {
 
-    Employee e=new Employee();
+    Employee e = new Employee();
 
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
-    public Employee insetEmployee(){
-        e.setName("sanjeev");
-        e.setAddress("himachal");
-        e.setUser_name("doraemon");
-        e.setPass("Sky@123");
+    public Employee insetEmployee() {
+        e.setName("amit");
+        e.setAddress("pune");
+        e.setUser_name("amit_09");
+        e.setPass("Amit@123");
 
         return employeeService.addNewEmployee(e);
     }
 
-    public  Employee editEmployee(){
-        e.setName("sanjeev");
-        e.setAddress("himachal");
-        e.setUser_name("doraemon");
-        e.setPass("Dora@123");
-        e.setEid(2);
-
-        return  employeeService.editEmployee(e);
+    //Inset hardcode method without postMapping request
+    @PostMapping(value = "/registerEmp")
+    public String addEmployeeWithPost(@RequestBody Employee e1) {
+        employeeService.addNewEmployeeUsingPost(e1);
+        return "Successfully Added New Employee";
     }
 
-    public  Employee deleteEmployeeById(Integer id){
-        return  employeeService.deleteEmployeeById(id);
+    //Inset hardcode method without putMapping request
+    //    public Employee editEmployee() {
+    //        e.setName("rohan");
+    //        e.setAddress("pune");
+    //        e.setUser_name("rohan_05");
+    //        e.setPass("Rohan@123");
+    //        e.setEid(2);
+    //
+    //        return employeeService.editEmployee(e);
+    //    }
+
+    //By  putMapping request
+    @PutMapping("/updateEmp")
+    public Employee editEmployee(@RequestBody Employee employee) {
+        return employeeService.editEmployee(employee);
+    }
+
+
+    public Employee deleteEmployeeById(Integer id) {
+        return employeeService.deleteEmployeeById(id);
     }
 
     @GetMapping("/get")
-    public List<Employee> getAllUser(){
+    public List<Employee> getAllUser() {
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/getSingle")
-    public Employee getSingleEmployee(@RequestParam Integer id){
+    public Employee getSingleEmployee(@RequestParam Integer id) {
         return employeeService.getSingleEmployee(id);
     }
 
