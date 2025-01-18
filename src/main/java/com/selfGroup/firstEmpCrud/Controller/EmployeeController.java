@@ -48,9 +48,11 @@ public class EmployeeController {
         return employeeService.editEmployee(employee);
     }
 
-
-    public Employee deleteEmployeeById(Integer id) {
-        return employeeService.deleteEmployeeById(id);
+    @DeleteMapping("/delete/{id}")
+    public String deleteEmployeeById(@PathVariable Integer id) {
+        Employee employee = employeeService.deleteEmployeeById(id);
+        return "Successfully Removed " + employee.getName();
+//                + employee.getName();
     }
 
     @GetMapping("/get")
@@ -61,6 +63,11 @@ public class EmployeeController {
     @GetMapping("/getSingle")
     public Employee getSingleEmployee(@RequestParam Integer id) {
         return employeeService.getSingleEmployee(id);
+    }
+
+    @GetMapping("/status/{active}")
+    public List<Employee> getAllUserByStatus( @PathVariable Boolean active) {
+        return employeeService.getAllUserByStatus(active);
     }
 
 }

@@ -16,10 +16,21 @@ public class Employee {
     @Column(name = "address")
     public String Address;
 
+    public Boolean active;
+
     @Column(name = "u_name")
     public String user_name;
 
     public String pass;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
 
     public int getEid() {
         return eid;
@@ -61,24 +72,15 @@ public class Employee {
         this.pass = pass;
     }
 
-    public  Employee(){}
+//    public Employee() {
+//    }
 
-    public Employee(Employee e) {
-        this.eid = e.getEid();
-        this.pass = e.getPass();
-        this.user_name = e.getUser_name();
-        Address = e.getAddress();
-        this.name = e.getName();
-    }
+//    public Employee(Employee e) {
+//        this.eid = e.getEid();
+//        this.pass = e.getPass();
+//        this.user_name = e.getUser_name();
+//        Address = e.getAddress();
+//        this.name = e.getName();
+//    }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "eid=" + eid +
-                ", name='" + name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", pass='" + pass + '\'' +
-                '}';
-    }
 }

@@ -44,9 +44,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee deleteEmployeeById(Integer id) {
+        Optional<Employee> byId = employeeRepository.findById(id);
         employeeRepository.deleteById(id);
-
-        return null;
+        return byId.orElse(null);
     }
 
     @Override
@@ -68,9 +68,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     //    through error for handling if data not present for the given id
     public Employee getSingleEmployee(Integer id) {
-        Employee employeeToReturn;
         Employee employee = employeeRepository.findById(id).get();
 
         return employee;
     }
+
+    //    public List<Employee> getAllUserByStatus() {
+//        return List.of();
+//    }
+//
+    @Override
+    public List<Employee> getAllUserByStatus(Boolean active) {
+
+        List<Employee> allActiveEmps = employeeRepository.findByActive(active);
+
+        return allActiveEmps;
+    }
+
 }
