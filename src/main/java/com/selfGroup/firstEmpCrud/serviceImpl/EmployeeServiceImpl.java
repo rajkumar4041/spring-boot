@@ -1,5 +1,6 @@
 package com.selfGroup.firstEmpCrud.serviceImpl;
 
+import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
 import com.selfGroup.firstEmpCrud.repository.EmployeeRepository;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
@@ -83,6 +84,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> allActiveEmps = employeeRepository.findByActive(active);
 
         return allActiveEmps;
+    }
+
+    @Override
+    public EmployeeDto getMyUserNameAndPass(int id) {
+        EmployeeDto empDto = new EmployeeDto();
+        Optional<Employee> byId = employeeRepository.findById(id);
+
+        byId.ifPresentOrElse(emp -> {
+            empDto.setUserName(emp.getUser_name());
+            empDto.setPass(emp.getPass());
+        }, () -> {
+            empDto.setErrorMsg("Employee with ID" + id + " not found");
+        });
+
+
+        return empDto;
     }
 
 }
