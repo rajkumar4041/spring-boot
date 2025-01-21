@@ -1,5 +1,6 @@
 package com.selfGroup.firstEmpCrud.service;
 
+import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public interface EmployeeService {
 
     public List<Employee> getAllUserByStatus(Boolean active);
 
+    public EmployeeDto getMyUserNameAndPass(int id);
 
     public Employee getSingleEmployee(Integer id);
 

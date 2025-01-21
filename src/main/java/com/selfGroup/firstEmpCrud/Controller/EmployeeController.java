@@ -1,5 +1,6 @@
 package com.selfGroup.firstEmpCrud.Controller;
 
+import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,8 +67,16 @@ public class EmployeeController {
     }
 
     @GetMapping("/status/{active}")
-    public List<Employee> getAllUserByStatus( @PathVariable Boolean active) {
+    public List<Employee> getAllUserByStatus(@PathVariable Boolean active) {
         return employeeService.getAllUserByStatus(active);
+    }
+
+
+    @GetMapping("/getCred/{id}")
+    public EmployeeDto getMyUserNamePass(@PathVariable int id) {
+
+        EmployeeDto empDto = employeeService.getMyUserNameAndPass(id);
+        return empDto;
     }
 
 }
