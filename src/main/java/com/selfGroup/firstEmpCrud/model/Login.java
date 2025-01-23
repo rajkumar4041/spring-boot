@@ -14,7 +14,7 @@ public class Login {
     private int id;
 
     @Column(name = "uName")
-    private String UserName;
+    private String userName;
 
     private String pass;
 
@@ -26,8 +26,11 @@ public class Login {
 
 //    private Employee employee;
 
-    public Login(String pass, String userName) {
+    public Login(String userName, String pass, Boolean isUserLoggedIn, Boolean active, Date lastLogin) {
+        this.userName = userName;
         this.pass = pass;
-        UserName = userName;
+        this.isUserLoggedIn = isUserLoggedIn;
+        this.active = active;
+        this.lastLogin = lastLogin;
     }
 }

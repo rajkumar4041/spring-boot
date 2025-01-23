@@ -4,6 +4,7 @@ import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
@@ -22,6 +23,8 @@ public interface EmployeeService {
     public List<Employee> getAllUserByStatus(Boolean active);
 
     public EmployeeDto getMyUserNameAndPass(int id);
+
+    public Employee updatePhoneNumberFromEmployee(int id, String phone);
 
     public Employee getSingleEmployee(Integer id);
 

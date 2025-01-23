@@ -2,6 +2,7 @@ package com.selfGroup.firstEmpCrud.Controller;
 
 import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
+import com.selfGroup.firstEmpCrud.model.Phone;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -71,6 +72,10 @@ public class EmployeeController {
         return employeeService.getAllUserByStatus(active);
     }
 
+    @PutMapping("/updatePhone/{id}")
+    public Employee updatePhone(@PathVariable int id, @RequestBody String phone) {
+        return employeeService.updatePhoneNumberFromEmployee(id, phone);
+    }
 
     @GetMapping("/getCred/{id}")
     public EmployeeDto getMyUserNamePass(@PathVariable int id) {
