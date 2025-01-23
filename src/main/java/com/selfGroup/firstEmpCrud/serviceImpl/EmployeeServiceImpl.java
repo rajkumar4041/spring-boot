@@ -2,6 +2,7 @@ package com.selfGroup.firstEmpCrud.serviceImpl;
 
 import com.selfGroup.firstEmpCrud.dto.EmployeeDto;
 import com.selfGroup.firstEmpCrud.model.Employee;
+import com.selfGroup.firstEmpCrud.model.Phone;
 import com.selfGroup.firstEmpCrud.repository.EmployeeRepository;
 import com.selfGroup.firstEmpCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,4 +103,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return empDto;
     }
 
+    @Override
+    public Employee updatePhoneNumberFromEmployee(int id, String phone) {
+        return employeeRepository.findById(id).map(e -> {
+                    e.getPhone().setPhoneNumber(phone);
+                    return employeeRepository.save(e);
+                }
+        ).orElse(null);
+    }
 }

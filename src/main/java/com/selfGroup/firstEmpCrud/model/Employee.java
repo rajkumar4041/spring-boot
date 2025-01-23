@@ -25,8 +25,10 @@ public class Employee {
 
     private String pass;
 
+    //    @OneToOne(cascade = CascadeType.ALL)
+//    private Login login;
     @OneToOne(cascade = CascadeType.ALL)
-    private Login login;
+    private Phone phone;
 
 //TODO: SINCE we are added dependency of Lombok we don't need to add getter/setter
 //TODO: all getter/setter stuff done by @Data Annotation
