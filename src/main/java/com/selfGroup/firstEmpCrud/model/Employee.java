@@ -1,76 +1,84 @@
 package com.selfGroup.firstEmpCrud.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "emp")
+@Data
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int eid;
+    private int eid;
 
     @Column(name = "emp_name")
-    public String name;
+    private String name;
 
     @Column(name = "address")
-    public String Address;
+    private String Address;
 
-    public Boolean active;
+    private Boolean active;
 
     @Column(name = "u_name")
-    public String user_name;
+    private String user_name;
 
-    public String pass;
+    private String pass;
 
-    public Boolean getActive() {
-        return active;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private Login login;
 
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+//TODO: SINCE we are added dependency of Lombok we don't need to add getter/setter
+//TODO: all getter/setter stuff done by @Data Annotation
 
-
-    public int getEid() {
-        return eid;
-    }
-
-    public void setEid(int eid) {
-        this.eid = eid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
+//    public Boolean getActive() {
+//        return active;
+//    }
+//
+//    public void setActive(Boolean active) {
+//        this.active = active;
+//    }
+//
+//
+//    public int getEid() {
+//        return eid;
+//    }
+//
+//    public void setEid(int eid) {
+//        this.eid = eid;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getAddress() {
+//        return Address;
+//    }
+//
+//    public void setAddress(String address) {
+//        Address = address;
+//    }
+//
+//    public String getUser_name() {
+//        return user_name;
+//    }
+//
+//    public void setUser_name(String user_name) {
+//        this.user_name = user_name;
+//    }
+//
+//    public String getPass() {
+//        return pass;
+//    }
+//
+//    public void setPass(String pass) {
+//        this.pass = pass;
+//    }
 
 //    public Employee() {
 //    }
