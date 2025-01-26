@@ -20,8 +20,6 @@ public class Login {
 
     private  Boolean isUserLoggedIn;
 
-    private  Boolean active;
-
     private Date lastLogin;
 
 //    private Employee employee;
@@ -30,7 +28,6 @@ public class Login {
         this.userName = userName;
         this.pass = pass;
         this.isUserLoggedIn = isUserLoggedIn;
-        this.active = active;
         this.lastLogin = lastLogin;
     }
 }
