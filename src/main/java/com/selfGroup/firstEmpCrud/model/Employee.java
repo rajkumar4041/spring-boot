@@ -32,7 +32,7 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     private Phone phone;
 
-    @OneToOne(cascade = CascadeType.DETACH)
+    @OneToOne(cascade = CascadeType.ALL)
     private Team team;
 
 //TODO: SINCE we are added dependency of Lombok we don't need to add getter/setter

@@ -19,7 +19,7 @@ public class Department {
 //    private List<Employee> employeeList;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.DETACH)
     private List<Team> teams;
 
 

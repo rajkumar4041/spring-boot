@@ -19,5 +19,6 @@ public class Team {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Employee> employeeList;
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Department department;
 }
