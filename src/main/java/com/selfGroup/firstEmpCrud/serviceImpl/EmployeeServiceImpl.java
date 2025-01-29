@@ -70,9 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     //    through error for handling if data not present for the given id
     public Employee getSingleEmployee(Integer id) {
-        Employee employee = employeeRepository.findById(id).get();
 
-        return employee;
+        return employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee with ID " + id + " not found"));
     }
 
     //    public List<Employee> getAllUserByStatus() {

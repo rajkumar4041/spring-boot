@@ -1,7 +1,10 @@
 package com.selfGroup.firstEmpCrud.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "emp")
@@ -16,7 +19,7 @@ public class Employee {
     private String name;
 
     @Column(name = "address")
-    private String Address;
+    private String address;
 
     private Boolean active;
 
@@ -26,13 +29,15 @@ public class Employee {
     private String pass;
 
     /**
-     *   @OneToOne(cascade = CascadeType.ALL)
-     *   private Login login;
+     * @OneToOne(cascade = CascadeType.ALL)
+     * private Login login;
      */
     @OneToOne(cascade = CascadeType.ALL)
     private Phone phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // Added fetch = FetchType.LAZY for performance optimization
+    @JsonBackReference // Added to manage serialization and avoid infinite recursion
+    @ToString.Exclude // Excluded from toString to avoid circular dependency
     private Team team;
 
 //TODO: SINCE we are added dependency of Lombok we don't need to add getter/setter
