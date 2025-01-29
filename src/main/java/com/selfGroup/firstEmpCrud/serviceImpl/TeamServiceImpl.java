@@ -25,10 +25,17 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team udpateTeam(int id, Team team) {
+        System.out.println("val here " + id + team);
         Optional<Team> byId = teamRepository.findById(id);
-        return byId.map((t) ->
-                teamRepository.save(t)
-        ).orElse(null);
+
+
+        return byId.map((t) -> {
+            t.setEmployeeList(team.getEmployeeList());
+            t.setName(team.getName());
+
+            return teamRepository.save(t);
+        }).orElse(null);
+
     }
 
 

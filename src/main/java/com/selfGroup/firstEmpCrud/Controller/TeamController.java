@@ -20,7 +20,7 @@ public class TeamController {
         return teamService.addTeam(team);
     }
 
-    @PutMapping("/updateTeam/{id}")
+    @PutMapping("/updateTeam")
     public Team udpateTeam(@RequestParam int id, @RequestBody Team team) {
         return teamService.udpateTeam(id, team);
     }

@@ -36,7 +36,7 @@ public class DepartmentController {
         return departmentService.deleteDepartment(id);
     }
 
-    @GetMapping("/getAllTeams")
+    @GetMapping("/getAllTeamsByDepartmentId")
     public String getAllTeams(@PathVariable int depId) {
         List<Team> myAllTeams = departmentService.getMyAllTeams(depId);
 
@@ -44,7 +44,6 @@ public class DepartmentController {
 
         return "No Any Team found";
     }
-
 
 
 }
