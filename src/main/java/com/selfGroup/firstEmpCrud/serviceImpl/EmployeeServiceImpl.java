@@ -111,4 +111,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
         ).orElse(null);
     }
+
+    public List<Employee> getEmployeeByName(String name) {
+        return employeeRepository.findByName(name);
+    }
+
+    public List<Employee> getEmployeeByUserName(String uNmae) {
+        return employeeRepository.findByName(uNmae);
+    }
 }

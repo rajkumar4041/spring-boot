@@ -18,5 +18,7 @@ public interface DepartmentService {
 
     public List<Team> getMyAllTeams(int departmentId);
 
+    public Department addTeamWithEmployee(int departmentId, int empId);
+
 
 }
