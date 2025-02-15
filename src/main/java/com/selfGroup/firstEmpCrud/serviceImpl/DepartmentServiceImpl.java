@@ -5,10 +5,12 @@ import com.selfGroup.firstEmpCrud.model.Department;
 import com.selfGroup.firstEmpCrud.model.Employee;
 import com.selfGroup.firstEmpCrud.model.Team;
 import com.selfGroup.firstEmpCrud.repository.DepartmentRepository;
+import com.selfGroup.firstEmpCrud.repository.TeamRepository;
 import com.selfGroup.firstEmpCrud.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.RuntimeErrorException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,21 +22,20 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    @Autowired
+    private TeamRepository teamRepository;
+
     @Override
     public Department addDepartment(Department department) {
         // Iterate through teams and set the department reference
-        if (department.getTeams() != null) {
-            for (Team team : department.getTeams()) {
-                team.setDepartment(department); // Set the department reference in Team
-
-                // Iterate through employees and set the team reference
-                if (team.getEmployeeList() != null) {
-                    for (Employee employee : team.getEmployeeList()) {
-                        employee.setTeam(team); // Set the team reference in Employee
-                    }
-                }
-            }
+        List<Team> teams = department.getTeams();
+        if (teams != null) {
+            teams.forEach(team -> {
+                team.setDepartment(department);
+                team.getEmployeeList().forEach(employee -> employee.setTeam(team));
+            });
         }
+
         return departmentRepository.save(department);
     }
 
@@ -44,6 +45,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return byId.map(exDepartment -> {
             exDepartment.setName(department.getName());
             exDepartment.setTeams(department.getTeams());
+
             return departmentRepository.save(exDepartment);
         }).orElse(null);
     }
@@ -74,6 +76,35 @@ public class DepartmentServiceImpl implements DepartmentService {
     public List<Team> getMyAllTeams(int departmentId) {
         Optional<Department> byId = departmentRepository.findById(departmentId);
         return byId.map(Department::getTeams).orElse(null);
+    }
+
+    public Department addTeamWithEmployee(int departmentId, int empId) {
+        Optional<Team> optionalTeam = teamRepository.findById(empId);
+
+        Optional<Department> optionalDepartment = departmentRepository.findById(departmentId);
+
+        if (optionalTeam.isPresent() && optionalDepartment.isPresent()) {
+            Department department = optionalDepartment.get();
+            Team team = optionalTeam.get();
+
+            team.setDepartment(department);
+            teamRepository.save(team);
+
+            List<Team> teams = department.getTeams();
+            teams.add(team);
+
+
+            System.out.println("Updated Department: >>>>>>>>>>>>>i>>>>>>>>>>>>>>>>>>>>>>>" + teams+"team>"+team);
+            department.setTeams(teams);
+
+            departmentRepository.save(department);
+
+            System.out.println("Updated Department: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + department);
+            return department;
+        }
+
+
+        return null;
     }
 
 }

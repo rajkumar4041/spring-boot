@@ -83,4 +83,15 @@ public class EmployeeController {
         return empDto;
     }
 
+    @GetMapping("/getEmpByName")
+    public List<Employee> getUserByName(@RequestParam String name) {
+        return employeeService.getEmployeeByName(name);
+    }
+
+    @GetMapping("/getEmpByUserName")
+    public List<Employee> getUserByUserName(@RequestParam String userName) {
+        return employeeService.getEmployeeByUserName(userName);
+    }
+
+
 }
