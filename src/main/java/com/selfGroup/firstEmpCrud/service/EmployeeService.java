@@ -28,4 +28,9 @@ public interface EmployeeService {
 
     public Employee getSingleEmployee(Integer id);
 
+
+    public List<Employee> getEmployeeByName(String name);
+
+    public List<Employee> getEmployeeByUserName(String uNmae);
+
 }

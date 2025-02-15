@@ -25,6 +25,10 @@ public class DepartmentController {
         return departmentService.updateDepartment(id, department);
     }
 
+    @PutMapping("/addTeamInDepartmentWithId")
+    public Department addTeamWithEmployee(@RequestParam int teamid, @RequestParam int dId) {
+        return departmentService.addTeamWithEmployee(dId, teamid);
+    }
 
     @GetMapping("/getAllDepartment")
     public List<Department> getAllDepartment() {
@@ -40,10 +44,15 @@ public class DepartmentController {
     public String getAllTeams(@PathVariable int depId) {
         List<Team> myAllTeams = departmentService.getMyAllTeams(depId);
 
-        if (!myAllTeams.isEmpty()) return "All Teams Fetch Successfully";
-
+        if (!myAllTeams.isEmpty()) {
+            return "All Teams Fetch Successfully";
+        }
+        
         return "No Any Team found";
+
     }
 
-
 }
+
+
+
