@@ -3,6 +3,7 @@ package com.selfGroup.firstEmpCrud.service;
 
 import com.selfGroup.firstEmpCrud.model.Department;
 import com.selfGroup.firstEmpCrud.model.Team;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface DepartmentService {
 
     public Department updateDepartment(int id, Department department);
 
-    public List<Department> getAllDepartment();
+    public ResponseEntity<List<Department>> getAllDepartment();
 
     public Department deleteDepartment(int id);
 
