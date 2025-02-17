@@ -4,6 +4,7 @@ import com.selfGroup.firstEmpCrud.model.Department;
 import com.selfGroup.firstEmpCrud.model.Team;
 import com.selfGroup.firstEmpCrud.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/getAllDepartment")
-    public List<Department> getAllDepartment() {
+    public ResponseEntity<List<Department>> getAllDepartment() {
         return departmentService.getAllDepartment();
     }
 
@@ -47,7 +48,7 @@ public class DepartmentController {
         if (!myAllTeams.isEmpty()) {
             return "All Teams Fetch Successfully";
         }
-        
+
         return "No Any Team found";
 
     }
