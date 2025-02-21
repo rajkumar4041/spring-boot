@@ -69,7 +69,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        return ResponseEntity.of(Optional.of(collect));
+//        return ResponseEntity.of(Optional.of(collect));
+        return ResponseEntity.ok().body(collect);
     }
 
     public Department deleteDepartment(int id) {
