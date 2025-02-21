@@ -24,7 +24,7 @@ public class Employee {
     private Boolean active;
 
     @Column(name = "u_name")
-    private String user_name;
+    private String userName;
 
     private String pass;
 
