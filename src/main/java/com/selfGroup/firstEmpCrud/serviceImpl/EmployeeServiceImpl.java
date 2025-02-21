@@ -93,7 +93,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Employee> byId = employeeRepository.findById(id);
 
         byId.ifPresentOrElse(emp -> {
-            empDto.setUserName(emp.getUser_name());
+            empDto.setUserName(emp.getUserName());
             empDto.setPass(emp.getPass());
         }, () -> {
             empDto.setErrorMsg("Employee with ID" + id + " not found");
@@ -116,7 +116,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findByName(name);
     }
 
-    public List<Employee> getEmployeeByUserName(String uNmae) {
-        return employeeRepository.findByName(uNmae);
+    public List<Employee> getEmployeeByUserName(String uName) {
+        return employeeRepository.findByName(uName);
     }
 }
