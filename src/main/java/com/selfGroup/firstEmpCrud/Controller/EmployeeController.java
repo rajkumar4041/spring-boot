@@ -19,7 +19,7 @@ public class EmployeeController {
     public Employee insetEmployee() {
         e.setName("amit");
         e.setAddress("pune");
-        e.setUser_name("amit_09");
+        e.setUserName("amit_09");
         e.setPass("Amit@123");
 
         return employeeService.addNewEmployee(e);

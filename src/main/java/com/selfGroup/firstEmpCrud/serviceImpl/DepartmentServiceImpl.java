@@ -8,6 +8,8 @@ import com.selfGroup.firstEmpCrud.repository.DepartmentRepository;
 import com.selfGroup.firstEmpCrud.repository.TeamRepository;
 import com.selfGroup.firstEmpCrud.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
@@ -51,7 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
 
-    public List<Department> getAllDepartment() {
+    public ResponseEntity<List<Department>> getAllDepartment() {
         List<Department> collect = departmentRepository.findAll().stream().map((department) -> {
             List<Team> teams = department.getTeams();
             department.setTeams(teams);
@@ -63,7 +65,12 @@ public class DepartmentServiceImpl implements DepartmentService {
             return department;
         }).collect(Collectors.toList());
 
-        return collect;
+        if (collect.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+//        return ResponseEntity.of(Optional.of(collect));
+        return ResponseEntity.ok().body(collect);
     }
 
     public Department deleteDepartment(int id) {
@@ -94,7 +101,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             teams.add(team);
 
 
-            System.out.println("Updated Department: >>>>>>>>>>>>>i>>>>>>>>>>>>>>>>>>>>>>>" + teams+"team>"+team);
+            System.out.println("Updated Department: >>>>>>>>>>>>>i>>>>>>>>>>>>>>>>>>>>>>>" + teams + "team>" + team);
             department.setTeams(teams);
 
             departmentRepository.save(department);

@@ -31,6 +31,6 @@ public interface EmployeeService {
 
     public List<Employee> getEmployeeByName(String name);
 
-    public List<Employee> getEmployeeByUserName(String uNmae);
+    public List<Employee> getEmployeeByUserName(String uName);
 
 }
