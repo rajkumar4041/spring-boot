@@ -1,11 +1,10 @@
 package com.selfGroup.firstEmpCrud.model.books;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class Book {
 
     @Id
@@ -14,5 +13,6 @@ public class Book {
 
     public String title;
 
-    public String author;
+    @OneToOne(cascade = CascadeType.ALL)
+    public Author author;
 }
