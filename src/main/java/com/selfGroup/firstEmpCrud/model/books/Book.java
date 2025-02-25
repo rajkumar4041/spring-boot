@@ -1,5 +1,6 @@
 package com.selfGroup.firstEmpCrud.model.books;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,5 +15,11 @@ public class Book {
     public String title;
 
     @OneToOne(cascade = CascadeType.ALL)
+    /*
+     * @JsonManagedReference
+     * tells that i am parent entity managing the child
+     * use with JsonBackReference
+     */
+    @JsonManagedReference
     public Author author;
 }
