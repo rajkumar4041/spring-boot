@@ -19,6 +19,7 @@ public class Book {
      * @JsonManagedReference
      * tells that i am parent entity managing the child
      * use with JsonBackReference
+     * manage reference convert into json but JsonBackReference not converted
      */
     @JsonManagedReference
     public Author author;
